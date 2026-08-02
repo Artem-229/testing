@@ -10,8 +10,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = sql.Exec("INSERT INTO users name $1", "artem")
-	if err != nil {
-		log.Fatal(err)
-	}
+	sql.Exec("INSERT INTO users name $1", "artem")
 }
