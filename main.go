@@ -2,11 +2,16 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
+	"log"
 )
 
 func main() {
-	fmt.Println("Nigger")
-	sql, _ := sql.Open("postgres", "user=postgres dbname=artem sslmode=disable")
-	sql.Exec("INSERT INTO users name $1", "artem")
+	sql, err := sql.Open("postgres", "user=postgres dbname=artem sslmode=disable")
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = sql.Exec("INSERT INTO users name $1", "artem")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
